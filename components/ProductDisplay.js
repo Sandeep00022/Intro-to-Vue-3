@@ -12,6 +12,7 @@ app.component('product-display', {
       <div class="product-image">
         <img v-bind:src="image">
       </div>
+      <button >Remove</button>
       <div class="product-info">
         <h1>{{ title }}</h1>
 
@@ -56,11 +57,12 @@ app.component('product-display', {
   },
   methods: {
       addToCart() {
-          this.cart += 1
+          this.$emit('add-to-cart',this.variants[this.selectedVariant].id)
       },
       updateVariant(index) {
           this.selectedVariant = index
-      }
+      },
+      
   },
   computed: {
       title() {
