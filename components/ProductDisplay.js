@@ -12,7 +12,7 @@ app.component('product-display', {
       <div class="product-image">
         <img v-bind:src="image">
       </div>
-      <button >Remove</button>
+      <button @click="removeFromCart" >Remove</button>
       <div class="product-info">
         <h1>{{ title }}</h1>
 
@@ -62,6 +62,9 @@ app.component('product-display', {
       updateVariant(index) {
           this.selectedVariant = index
       },
+      removeFromCart() {
+        this.$emit('remove-from-cart',this.variants[this.selectedVariant].id)
+      }
       
   },
   computed: {
